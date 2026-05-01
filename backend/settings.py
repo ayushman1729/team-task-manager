@@ -25,7 +25,11 @@ SECRET_KEY = 'django-insecure-xz772x9nvf+dznu7mmts9z*(98t53i4s&k%dt(gvftzy24j48-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "web-production-18ccf.up.railway.app",
+    "localhost",
+    "127.0.0.1",
+]
 
 
 # Application definition
@@ -133,3 +137,4 @@ REST_FRAMEWORK = {
 }
 
 AUTH_USER_MODEL = 'users.User'
+
