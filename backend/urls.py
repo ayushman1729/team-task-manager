@@ -17,9 +17,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+from django.http import HttpResponse
+
+def home(request):
+    return HttpResponse("Backend is Live ")
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+    path('', home),
 
     path('api/', include('projects.urls')),
     path('api/', include('tasks.urls')),
