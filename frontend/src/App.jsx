@@ -62,25 +62,44 @@ function App() {
     background: "#ff4d4d"
   };
 
-  const handleCreateProject = () => {
-    if (!projectTitle || !projectDescription) {
-      alert("Please fill all project fields");
-      return;
-    }
+const handleCreateProject = async () => {
+  if (!projectTitle || !projectDescription) {
+    alert("Please fill all project fields");
+    return;
+  }
+
+  try {
+    await axios.post(
+      "https://web-production-18ccf.up.railway.app/api/projects/",
+      {
+        title: projectTitle,
+        description: projectDescription,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+        },
+      }
+    );
+
+    alert("Project Created Successfully");
 
     setProjects([
       ...projects,
       {
         title: projectTitle,
-        description: projectDescription
-      }
+        description: projectDescription,
+      },
     ]);
 
     setProjectTitle("");
     setProjectDescription("");
 
-    alert("Project Created Successfully");
-  };
+  } catch (error) {
+    console.log(error);
+    alert("Project creation failed");
+  }
+};
 
   const handleCreateTask = () => {
     if (!taskTitle || !taskDescription) {
