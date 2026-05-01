@@ -20,12 +20,14 @@ from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from django.http import HttpResponse
 
 def home(request):
-    return HttpResponse("Backend is Live ")
+    return HttpResponse("Backend is Live")
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
 
     path('', home),
+    path('admin/', admin.site.urls),
+
+   
 
     path('api/', include('projects.urls')),
     path('api/', include('tasks.urls')),
